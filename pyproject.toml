@@ -1,0 +1,19 @@
+[project]
+name = "price-radar"
+version = "0.1.0"
+description = "Сервис для поиска лучшего предложения в маркетплейсах. Сравнивает цены, условия доставки и надежность продавцов, чтобы помогать покупателям выбирать оптимальные варианты."
+authors = [
+    {name = "psoleny", email = "dyuhje9@gmail.com"},
+]
+dependencies = []
+requires-python = ">=3.13"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+
+[tool.pdm]
+distribution = true
