@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../dns_parser"
+		},
+		{
+			"path": "../web"
+		}
+	],
+	"settings": {}
+}
