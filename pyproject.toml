@@ -5,7 +5,13 @@ description = "Сервис для поиска лучшего предложе�
 authors = [
     {name = "psoleny", email = "dyuhje9@gmail.com"},
 ]
-dependencies = []
+dependencies = [
+"sqlalchemy",
+"sqlalchemy[asyncio]",
+"requests",
+"psycopg>=3.1.0",
+"alembic"
+]
 requires-python = ">=3.13"
 readme = "README.md"
 license = {text = "MIT"}
