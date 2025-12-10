@@ -1,9 +1,20 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
+from dns_parser.categories import categories
+from loguru import logger
 
-driver = webdriver.Chrome()  # Requires ChromeDriver
-driver.get('https://www.dns-shop.ru/catalog')
-elements = driver.find_elements(By.TAG_NAME, 'div')
-for elem in elements:
-    print(elem.text)
-driver.quit()
+from dns_parser.driver_storage import DriverStorage
+
+def main():
+    logger.info("Creating chrome driver")
+    DriverStorage()
+
+    driver = DriverStorage.get_driver()
+
+    categories.Parser()
+
+    try:
+        driver.quit()
+    except OSError:
+        pass
+
+if __name__ == '__main__':
+    main()
