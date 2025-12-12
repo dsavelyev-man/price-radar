@@ -30,6 +30,7 @@ class Parser:
         logger.info("Collectiong categories")
         driver = DriverStorage.get_driver()
         driver.get(url("catalog"))
+
         root_categories = self.__get_categories()
         self.get_recursive_categories(root_categories)
         
@@ -40,21 +41,22 @@ class Parser:
             child_categories = self.__get_categories(parent_category=category)
             category.set_children(child_categories)
 
+            if len(child_categories) > 0:
+                self.get_recursive_categories(child_categories)
+
     def __get_categories(self, parent_category: str=None):
         driver = DriverStorage.get_driver()
 
+        # wait = WebDriverWait(driver, 10)
+
+
         # DriverStorage.page_is_loaded()
-        wait = WebDriverWait(driver, 10)
+        time.sleep(10)
+        driver.get_screenshot_as_file("screenshot.png")
 
-        try:
-            wait.until(expected_conditions.presence_of_element_located((By.CLASS_NAME, "subcategory__item")))
-        except:
-            try:
-                wait.until(expected_conditions.presence_of_element_located((By.CLASS_NAME, "subcategory__childs-item")))
-            except:
-                return []
-            
+        # print("test")
 
+               
         driver.execute_script("window.stop();")
 
         categories = []
@@ -85,9 +87,9 @@ class Parser:
                     continue
                 categories.append(Category(text, href, parent_category))
 
-        # TODO удалить
-        with open("test-" + str(self.counter) + ".json", "w", encoding="utf-8") as f:
-            json.dump(categories, f, ensure_ascii=False, indent=4, default=vars)
+        # # TODO удалить
+        # with open("test-" + str(self.counter) + ".json", "w", encoding="utf-8") as f:
+        #     json.dump(categories, f, ensure_ascii=False, indent=4, default=vars)
 
         self.counter += 1
         logger.info(f"Collected: " + str(len(categories)) + " categories")

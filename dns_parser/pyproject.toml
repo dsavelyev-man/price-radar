@@ -5,7 +5,7 @@ description = "Default template for PDM package"
 authors = [
     {name = "dsavelyev", email = "kriper0nind@gmail.com"},
 ]
-dependencies = ["undetected-chromedriver>=3.5.5", "selenium>=4.21.0", "bs4>=0.0.2", "webdriver-manager>=4.0.2", "setuptools>=80.9.0", "loguru>=0.7.3"]
+dependencies = ["undetected-chromedriver>=3.5.5", "selenium>=4.21.0", "bs4>=0.0.2", "webdriver-manager>=4.0.2", "setuptools>=80.9.0", "loguru>=0.7.3", "fake-useragent>=2.2.0", "selenium-stealth>=1.0.6"]
 requires-python = ">=3.12"
 readme = "README.md"
 license = {text = "MIT"}
